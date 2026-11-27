@@ -1,0 +1,86 @@
+:root{--bg:#050506;--bg2:#0d0e11;--bg3:#15171b;--line:#23262c;--ink:#ecebe6;--ink2:#a2a6ae;--ink3:#6f747d;
+--V:#3ddc97;--M:#f2b544;--F:#ff5a5f;--N:#8a8f98;--r:10px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3,.brand{font-family:"Familjen Grotesk","IBM Plex Sans",sans-serif;margin:0}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.nav{position:sticky;top:0;z-index:20;background:rgba(5,5,6,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.navin{display:flex;align-items:center;gap:28px;height:58px}
+.brand{font-weight:700;font-size:18px;text-decoration:none;white-space:nowrap}.brand span{color:var(--ink3);font-weight:500;margin-left:8px;font-size:14px}
+#tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+#tabs button{background:none;border:0;color:var(--ink2);font:500 15px "IBM Plex Sans";padding:8px 14px;border-radius:8px;cursor:pointer;white-space:nowrap}
+#tabs button:hover{color:var(--ink)}#tabs button[aria-selected=true]{background:var(--bg3);color:var(--ink)}
+.hero{padding-top:36px;padding-bottom:22px}
+.who{display:flex;align-items:center;gap:18px}
+.logo{width:56px;height:56px;border-radius:12px;background:var(--bg3);border:1px solid var(--line);display:grid;place-items:center;font:700 20px "Familjen Grotesk";color:var(--ink2);overflow:hidden;flex:none}
+.logo img{width:100%;height:100%;object-fit:cover}
+.kick{margin:0;color:var(--ink2);font-size:15px}
+h1{font-size:clamp(34px,5.4vw,64px);line-height:1.02;letter-spacing:-.02em;font-weight:700}
+.sum{margin:14px 0 0;color:var(--ink2);max-width:760px}.sum b{color:var(--ink)}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:24px;align-items:start}
+.player{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.vwrap{position:relative;aspect-ratio:16/9;background:#000}.vwrap iframe,#yt{position:absolute;inset:0;width:100%;height:100%}
+.toast{position:absolute;left:12px;right:12px;bottom:46px;background:rgba(5,5,6,.9);border-left:4px solid var(--N);padding:8px 12px;border-radius:6px;font-size:14px;opacity:0;transform:translateY(6px);transition:.25s;pointer-events:none}
+.toast.on{opacity:1;transform:none}
+.strip{padding:10px 12px 6px}
+.chart{position:relative;height:84px;background:linear-gradient(#1a1214 0 50%,#0c1914 50% 100%);border-radius:6px;cursor:pointer;overflow:hidden}
+.axis{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+.ph{position:absolute;top:0;bottom:0;width:2px;background:var(--ink);left:0;pointer-events:none;box-shadow:0 0 6px rgba(255,255,255,.6)}
+.tick{position:absolute;width:5px;margin-left:-2px;border:0;padding:0;cursor:pointer;border-radius:2px;opacity:.9}
+.tick:hover,.tick.sel{opacity:1;outline:1px solid var(--ink);z-index:2}
+.tick[data-v=V]{top:50%;height:36%;background:var(--V)}
+.tick[data-v=M]{bottom:50%;height:30%;background:var(--M)}
+.tick[data-v=F]{bottom:50%;height:44%;background:var(--F)}
+.tick[data-v=N]{bottom:50%;height:14%;background:var(--N)}
+.blocks{position:relative;height:20px;margin-top:6px}
+.blocks span{position:absolute;top:0;font-size:11px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:1px solid var(--line);padding-left:5px}
+.detail{margin-top:16px;background:var(--bg2);border:1px solid var(--line);border-top:3px solid var(--N);border-radius:var(--r);padding:22px 24px}
+.dh{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px;color:var(--ink2);font-size:14px}
+.pill{display:inline-block;font:600 12.5px "IBM Plex Sans";padding:3px 10px;border-radius:99px;color:#050506}
+.pill.V{background:var(--V)}.pill.M{background:var(--M)}.pill.F{background:var(--F)}.pill.N{background:var(--N)}
+.tc{font-variant-numeric:tabular-nums;color:var(--ink)}
+.detail h3{font-size:13px;font-weight:600;color:var(--ink3);margin:18px 0 6px;letter-spacing:.02em}
+.detail blockquote{margin:0;font:600 22px/1.3 "Familjen Grotesk";letter-spacing:-.005em}
+.detail p{margin:0;max-width:68ch}
+.btn{display:inline-flex;gap:8px;align-items:center;background:var(--ink);color:#050506;border:0;border-radius:8px;padding:9px 16px;font:600 14px "IBM Plex Sans";cursor:pointer}
+.btn.g{background:var(--bg3);color:var(--ink);border:1px solid var(--line)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.src{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.src a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:var(--bg3)}
+.src a:hover{border-color:var(--ink3)}
+.src b{display:block;font-weight:600;font-size:15px}.src small{color:var(--ink2);font-size:13px}
+.none{color:var(--ink2)}
+details.otras{margin-top:14px;color:var(--ink2);font-size:14px}details summary{cursor:pointer;color:var(--ink2)}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:18px;position:sticky;top:74px;display:flex;flex-direction:column;max-height:calc(100vh - 92px)}
+.panel h2{font-size:22px}.count{margin:4px 0 12px;color:var(--ink2);font-size:14px}
+.vtabs{display:flex;flex-wrap:wrap;gap:6px}
+.vtabs button{background:var(--bg3);border:1px solid var(--line);color:var(--ink2);border-radius:99px;padding:5px 11px;font:500 13px "IBM Plex Sans";cursor:pointer}
+.vtabs button[aria-selected=true]{background:var(--ink);color:#050506;border-color:var(--ink)}
+.vbar{display:flex;height:6px;border-radius:99px;overflow:hidden;margin:12px 0;background:var(--bg3)}.vbar i{display:block}
+.list{overflow:auto;margin:0 -8px;padding:0 8px;flex:1;min-height:200px}
+.it{display:grid;grid-template-columns:54px 12px 1fr;gap:10px;align-items:start;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);color:inherit;padding:12px 4px;cursor:pointer;font:inherit}
+.it:hover,.it.sel{background:var(--bg3)}
+.it .t{font-variant-numeric:tabular-nums;color:var(--ink2);font-size:13px;padding-top:2px}
+.it .d{width:10px;height:10px;border-radius:50%;margin-top:6px}
+.it .q{display:block;font-size:14.5px;line-height:1.4}.it small{display:block;color:var(--ink3);font-size:12.5px;margin-top:3px}
+.d.V,.d[data-v=V]{background:var(--V)}.d.M,.d[data-v=M]{background:var(--M)}.d.F,.d[data-v=F]{background:var(--F)}.d.N,.d[data-v=N]{background:var(--N)}
+.blk{padding-top:56px}.blk h2{font-size:30px;margin-bottom:18px}
+.chap{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.chap a{display:block;text-decoration:none;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.chap a:hover{border-color:var(--ink3)}.chap b{display:block}.chap span{color:var(--ink2);font-size:13.5px;font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.kpi{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.kpi b{display:block;font:700 26px "Familjen Grotesk"}.kpi span{display:block;color:var(--ink2);font-size:14px;margin:4px 0 8px}.kpi a{font-size:13px;color:var(--ink2)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.two h3{font-size:16px;margin:22px 0 8px}.two h3:first-child{margin-top:0}
+.rules,.clean{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.rules li{display:flex;gap:12px}.rules b.d{width:12px;height:12px;border-radius:50%;margin-top:7px;flex:none}
+.clean li{padding-left:16px;position:relative}.clean li:before{content:"";position:absolute;left:0;top:.7em;width:6px;height:1px;background:var(--ink3)}
+footer{margin-top:64px;padding:28px 0;border-top:1px solid var(--line);color:var(--ink3);font-size:14px}
+@media(max-width:1020px){.grid{grid-template-columns:1fr}.panel{position:static;max-height:560px}.two{grid-template-columns:1fr;gap:10px}}
+@media(max-width:560px){.wrap{padding:0 14px}.detail{padding:16px}.detail blockquote{font-size:19px}.brand span{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+.pr{font:500 12.5px 'IBM Plex Sans';color:var(--ink);border:1px solid var(--ink3);border-radius:99px;padding:2px 9px}

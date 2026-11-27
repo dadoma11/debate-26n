@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verificador del debate a cuatro · 26N</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<header class="nav"><div class="wrap navin">
+ <a class="brand" href="#top">Verificador<span>debate 26N</span></a>
+ <nav id="tabs" aria-label="Candidatos"></nav>
+</div></header>
+<main id="top">
+<section class="hero wrap">
+ <div class="who"><div class="logo" id="logo" aria-hidden="true"></div>
+  <div><p class="kick" id="party"></p><h1 id="name">Los cuatro candidatos</h1></div></div>
+ <p class="sum" id="sum"></p>
+</section>
+<section class="wrap grid">
+ <div class="left">
+  <div class="player">
+   <div class="vwrap" id="vwrap"><div id="yt"></div><div class="toast" id="toast" aria-hidden="true"></div></div>
+   <div class="strip" role="group" aria-label="Línea temporal del debate">
+    <div class="chart" id="chart"><div class="axis"></div><div class="ph" id="ph"></div></div>
+    <div class="blocks" id="blocks"></div>
+   </div>
+  </div>
+  <article class="detail" id="detail" aria-live="polite"></article>
+ </div>
+ <aside class="panel" aria-label="Momentos">
+  <h2>Momentos</h2>
+  <p class="count" id="count"></p>
+  <div class="vtabs" id="vtabs" role="tablist"></div>
+  <div class="vbar" id="vbar" aria-hidden="true"></div>
+  <div class="list" id="list"></div>
+ </aside>
+</section>
+<section class="wrap blk" id="capitulos"><h2>Capítulos</h2><ol class="chap" id="chap"></ol></section>
+<section class="wrap blk" id="datos"><h2>Datos oficiales de referencia</h2><div class="kpis" id="kpis"></div></section>
+<section class="wrap blk" id="metodo"><h2>Método y límites</h2>
+ <div class="two"><div>
+  <h3>Cómo se puntúa</h3>
+  <ul class="rules">
+   <li><b class="d V"></b><span><strong>Verdad.</strong> La cifra o el hecho coincide con la fuente oficial citada.</span></li>
+   <li><b class="d M"></b><span><strong>A medias.</strong> Es cierto en parte, falta contexto, mezcla periodos o magnitudes, o es un compromiso presentado como hecho.</span></li>
+   <li><b class="d F"></b><span><strong>Falso.</strong> La fuente oficial lo contradice.</span></li>
+   <li><b class="d N"></b><span><strong>Sin comprobar.</strong> No hay fuente oficial ni coincidencia entre varias fuentes independientes. No es ni cierto ni falso.</span></li>
+  </ul>
+  <p>El veredicto se apoya primero en fuentes oficiales. Si no hay dato oficial, solo se puntúa cuando al menos dos fuentes independientes (verificadores y medios de distinta línea editorial, como elDiario.es, GNDiario, Infobae, Vozpópuli o Artículo14) coinciden; esas fichas llevan la etiqueta «Contraste de prensa». Si solo habla un medio, queda «Sin comprobar».</p></div>
+ <div>
+  <h3>Qué no se puntúa</h3>
+  <ul class="clean"><li>Opiniones, promesas, valoraciones y ataques personales.</li><li>Lo que dice la moderadora.</li><li>Cualquier afirmación de la que no se pueda comprobar el sentido.</li></ul>
+  <h3>Límites</h3>
+  <ul class="clean">
+   <li>La transcripción es automática. Cifras y nombres pueden estar mal oídos: compruébalo con el botón «Verlo en el vídeo».</li>
+   <li>La atribución a cada candidato se ha inferido del minuto y puede fallar en los cruces.</li>
+   <li>Este expediente reúne las afirmaciones comprobables más relevantes, no todas las frases del debate.</li>
+   <li>Algunos enlaces oficiales llevan al portal del organismo («Portal del organismo») y no a la tabla exacta.</li></ul>
+  <h3>Organizadores y fuente del vídeo</h3>
+  <p>Debate organizado por la Academia de la Televisión, 26 de noviembre de 2026. Vídeo: emisión de El Debate en YouTube, 1 h 56 min 49 s.</p>
+ </div></div>
+</section>
+</main>
+<footer><div class="wrap">Proyecto independiente. Fotos y escudos: añade los tuyos en <code>img/</code> (ver LEEME.txt).</div></footer>
+<script src="claims.js"></script><script src="app.js"></script>
+</body></html>
