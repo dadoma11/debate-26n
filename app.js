@@ -20,10 +20,11 @@ var tabs=document.getElementById("tabs");
  b.onclick=function(){if(t[0]==="m"){document.getElementById("metodo").scrollIntoView();return}setCand(t[0])};tabs.appendChild(b)});
 function setCand(c){cand=c;vf="";tabs.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.c===c?"true":"false")});hero();renderPanel();ticks();var f=filteredItems();if(f.length&&!vis(items[sel]))select(f[0].k,false);renderPanel();ticks()}
 function logoBox(c){var b=document.getElementById("logo");b.innerHTML="";if(!c){b.textContent="26N";return}b.textContent=INI[c];var i=new Image();i.alt="";i.src="img/"+IMG[c]+".jpg";i.onload=function(){b.textContent="";b.appendChild(i)};i.onerror=function(){var j=new Image();j.alt="";j.src="img/"+IMG[c]+".png";j.onload=function(){b.textContent="";b.appendChild(j)}}}
-function hero(){var L=candItems(),n={V:0,M:0,F:0,N:0};L.forEach(function(x){n[x.v]++});var ok=L.length-n.N,press=L.filter(function(x){return x.pr&&x.pr.length}).length;
+function hero(){var L=candItems(),n={V:0,M:0,F:0,N:0};L.forEach(function(x){n[x.v]++});var ok=L.length-n.N,official=L.filter(function(x){return x.o.length}).length,press=L.filter(function(x){return x.pr&&x.pr.length}).length;
  document.getElementById("name").textContent=cand?NAMES[cand]:"Los cuatro candidatos";
  document.getElementById("party").textContent=cand?PARTY[cand]:"Debate a cuatro, 26 de noviembre de 2026";logoBox(cand);
- document.getElementById("sum").innerHTML="Comprobamos <b>"+L.length+" afirmaciones</b>"+(cand?" de "+NAMES[cand]:"")+" <b>"+ok+"</b> con veredicto ("+n.V+" verdad, "+n.M+" a medias, "+n.F+" falso): "+oo+" con fuentes oficiales y "+press+" con contraste periodístico. <b>"+n.N+"</b> quedan sin comprobar. Las categorías de fuentes pueden solaparse; las opiniones y promesas no se puntúan."}
+ document.getElementById("sum").textContent=L.length+" afirmaciones. "+ok+" con veredicto y "+n.N+" pendientes. "+official+" fichas enlazan fuentes oficiales y "+press+" incluyen referencias periodísticas. Una ficha puede incluir ambas.";}
+
 /* línea temporal */
 var chart=document.getElementById("chart"),ph=document.getElementById("ph");
 BLQ.forEach(function(b){var s=el("span","",esc(b[0]));s.style.left=(b[1]/TOTAL*100)+"%";s.style.width=((b[2]-b[1])/TOTAL*100)+"%";document.getElementById("blocks").appendChild(s)});
