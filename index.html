@@ -1,64 +1,69 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Verificador del debate a cuatro · 26N</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css"></head><body>
-<header class="nav"><div class="wrap navin">
- <a class="brand" href="#top">Verificador<span>debate 26N</span></a>
- <nav id="tabs" aria-label="Candidatos"></nav>
-</div></header>
-<main id="top">
-<section class="hero wrap">
- <div class="who"><div class="logo" id="logo" aria-hidden="true"></div>
-  <div><p class="kick" id="party"></p><h1 id="name">Los cuatro candidatos</h1></div></div>
- <p class="sum" id="sum"></p>
-</section>
-<section class="wrap grid">
- <div class="left">
-  <div class="player">
-   <div class="vwrap" id="vwrap"><div id="yt"></div><div class="toast" id="toast" aria-hidden="true"></div></div>
-   <div class="strip" role="group" aria-label="Línea temporal del debate">
-    <div class="chart" id="chart"><div class="axis"></div><div class="ph" id="ph"></div></div>
-    <div class="blocks" id="blocks"></div>
-   </div>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11151c">
+  <meta name="description" content="Verificación independiente, con fuentes y contexto, de las afirmaciones del debate a cuatro del 26N.">
+  <title>Debate 26N · Verificación con datos y fuentes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Verificador Debate 26N, inicio"><span class="brand-mark" aria-hidden="true">26</span><span>DEBATE<span class="brand-muted"> / 26N</span></span></a>
+    <nav class="candidate-nav" id="tabs" aria-label="Filtrar por candidato"></nav>
+    <a class="method-link" href="#metodo">Método</a>
   </div>
-  <article class="detail" id="detail" aria-live="polite"></article>
- </div>
- <aside class="panel" aria-label="Momentos">
-  <h2>Momentos</h2>
-  <p class="count" id="count"></p>
-  <div class="vtabs" id="vtabs" role="tablist"></div>
-  <div class="vbar" id="vbar" aria-hidden="true"></div>
-  <div class="list" id="list"></div>
- </aside>
-</section>
-<section class="wrap blk" id="capitulos"><h2>Capítulos</h2><ol class="chap" id="chap"></ol></section>
-<section class="wrap blk" id="datos"><h2>Datos oficiales de referencia</h2><div class="kpis" id="kpis"></div></section>
-<section class="wrap blk" id="metodo"><h2>Método y límites</h2>
- <div class="two"><div>
-  <h3>Cómo se puntúa</h3>
-  <ul class="rules">
-   <li><b class="d V"></b><span><strong>Verdad.</strong> La cifra o el hecho coincide con la fuente oficial citada.</span></li>
-   <li><b class="d M"></b><span><strong>A medias.</strong> Es cierto en parte, falta contexto, mezcla periodos o magnitudes, o es un compromiso presentado como hecho.</span></li>
-   <li><b class="d F"></b><span><strong>Falso.</strong> La fuente oficial lo contradice.</span></li>
-   <li><b class="d N"></b><span><strong>Sin comprobar.</strong> No hay fuente oficial ni coincidencia entre varias fuentes independientes. No es ni cierto ni falso.</span></li>
-  </ul>
-  <p>El veredicto se apoya primero en fuentes oficiales. Si no hay dato oficial, solo se puntúa cuando al menos dos fuentes independientes (verificadores y medios de distinta línea editorial, como elDiario.es, GNDiario, Infobae, Vozpópuli o Artículo14) coinciden; esas fichas llevan la etiqueta «Contraste de prensa». Si solo habla un medio, queda «Sin comprobar».</p></div>
- <div>
-  <h3>Qué no se puntúa</h3>
-  <ul class="clean"><li>Opiniones, promesas, valoraciones y ataques personales.</li><li>Lo que dice la moderadora.</li><li>Cualquier afirmación de la que no se pueda comprobar el sentido.</li></ul>
-  <h3>Límites</h3>
-  <ul class="clean">
-   <li>La transcripción es automática. Cifras y nombres pueden estar mal oídos: compruébalo con el botón «Verlo en el vídeo».</li>
-   <li>La atribución a cada candidato se ha inferido del minuto y puede fallar en los cruces.</li>
-   <li>Este expediente reúne las afirmaciones comprobables más relevantes, no todas las frases del debate.</li>
-   <li>Algunos enlaces oficiales llevan al portal del organismo («Portal del organismo») y no a la tabla exacta.</li></ul>
-  <h3>Organizadores y fuente del vídeo</h3>
-  <p>Debate organizado por la Academia de la Televisión, 26 de noviembre de 2026. Vídeo: emisión de El Debate en YouTube, 1 h 56 min 49 s.</p>
- </div></div>
-</section>
+</header>
+<main id="contenido">
+  <section class="hero wrap" id="top" aria-labelledby="name">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> Expediente de verificación <span class="eyebrow-sep">·</span> Debate del 26 de noviembre de 2026</p>
+      <div class="hero-title-row">
+        <div class="logo" id="logo" aria-hidden="true"></div>
+        <div><p class="candidate-party" id="party"></p><h1 id="name">Los cuatro candidatos</h1></div>
+      </div>
+      <p class="sum" id="sum"></p>
+      <p class="cutoff">Datos consultados hasta el <time datetime="2026-11-27">27 de noviembre de 2026</time>. Los veredictos describen las afirmaciones con el contexto disponible en esa fecha.</p>
+    </div>
+    <div class="hero-aside"><span class="hero-aside-label">EN ESTA EDICIÓN</span><strong>95</strong><span>afirmaciones revisadas</span><a href="#momentos">Explorar las verificaciones <span aria-hidden="true">↓</span></a></div>
+  </section>
+  <section class="wrap workspace" aria-label="Reproductor y verificaciones">
+    <div class="left-column">
+      <div class="player-card">
+        <div class="video-frame" id="vwrap"><div id="yt" title="Debate a cuatro entre Sánchez, Feijóo, Abascal y Colau"></div><div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div></div>
+        <div class="timeline-area"><div class="timeline-heading"><span>Línea temporal</span><span class="timeline-hint">Selecciona un punto para ver la afirmación</span></div><div class="strip" role="group" aria-label="Línea temporal del debate"><div class="chart" id="chart"><div class="axis"></div><div class="ph" id="ph"></div></div><div class="blocks" id="blocks"></div></div></div>
+      </div>
+      <article class="detail" id="detail" aria-live="polite" aria-label="Ficha de verificación"></article>
+    </div>
+    <aside class="panel" id="momentos" aria-labelledby="momentos-title">
+      <div class="panel-heading"><div><p class="section-kicker">ÍNDICE DEL DEBATE</p><h2 id="momentos-title">Afirmaciones</h2></div><span class="panel-total" id="count"></span></div>
+      <div class="filter-controls">
+        <label class="search-box"><span class="sr-only">Buscar en las afirmaciones</span><span class="search-icon" aria-hidden="true">⌕</span><input id="claim-search" type="search" placeholder="Buscar cifra, frase o tema…" autocomplete="off"></label>
+        <label class="topic-select-label"><span class="sr-only">Filtrar por tema</span><select id="topic-filter"><option value="">Todos los temas</option></select></label>
+      </div>
+      <div class="vtabs" id="vtabs" role="tablist" aria-label="Filtrar por veredicto"></div>
+      <div class="vbar" id="vbar" aria-hidden="true"></div>
+      <div class="list" id="list" aria-label="Resultados"></div>
+      <p class="empty-state" id="empty-state" hidden>No hay afirmaciones que coincidan. Prueba con otra búsqueda o filtro.</p>
+    </aside>
+  </section>
+  <section class="wrap blk" id="capitulos"><div class="section-heading"><div><p class="section-kicker">VÍDEO COMPLETO</p><h2>Capítulos</h2></div><p>Accede directamente a cada bloque del debate.</p></div><ol class="chap" id="chap"></ol></section>
+  <section class="wrap blk" id="datos"><div class="section-heading"><div><p class="section-kicker">FUENTES PRIMARIAS</p><h2>Datos oficiales de referencia</h2></div><p>Indicadores de organismos públicos citados en este expediente.</p></div><div class="kpis" id="kpis"></div></section>
+  <section class="wrap blk method-section" id="metodo"><div class="section-heading"><div><p class="section-kicker">TRANSPARENCIA</p><h2>Método y límites</h2></div><p>La ficha explica qué dato se compara y qué parte sigue abierta.</p></div>
+    <div class="method-grid"><div class="method-card"><h3>Cómo leer los veredictos</h3><ul class="rules"><li><b class="d V" aria-hidden="true"></b><span><strong>Verdad.</strong> La afirmación coincide con la fuente y el periodo citados.</span></li><li><b class="d M" aria-hidden="true"></b><span><strong>A medias.</strong> Tiene una parte correcta, pero omite contexto, mezcla periodos o compara magnitudes distintas.</span></li><li><b class="d F" aria-hidden="true"></b><span><strong>Falso.</strong> La evidencia consultada contradice el núcleo de la afirmación.</span></li><li><b class="d N" aria-hidden="true"></b><span><strong>Sin comprobar.</strong> No hay evidencia suficiente para asignar un veredicto; no significa que sea falsa.</span></li></ul></div>
+    <div class="method-card"><h3>Fuentes y contraste</h3><p>Priorizamos estadísticas, normas y documentos de organismos públicos. Añadimos verificaciones periodísticas para aportar contexto, localizar errores de transcripción o comparar interpretaciones; se identifican como fuentes secundarias y no sustituyen el documento original cuando este está disponible.</p><p>Cuando los datos no permiten resolver una frase, se mantiene «Sin comprobar». Las estimaciones y operaciones propias se señalan como tales.</p></div>
+    <div class="method-card"><h3>Qué queda fuera</h3><ul class="clean"><li>Opiniones, promesas, valoraciones y ataques personales.</li><li>Intervenciones de la moderadora.</li><li>Afirmaciones cuyo sentido no se puede recuperar con seguridad.</li></ul></div>
+    <div class="method-card"><h3>Límites y correcciones</h3><ul class="clean"><li>La transcripción es automática; comprueba la cita en el vídeo, especialmente cifras y nombres.</li><li>La atribución se infiere del minuto y puede fallar durante los cruces.</li><li>El expediente selecciona afirmaciones relevantes; no transcribe ni verifica cada frase.</li><li>Los datos tienen fechas de corte distintas. Cada ficha debe leerse con su periodo y definición, no como una cifra atemporal.</li></ul><p>Organizó el debate la Academia de Televisión. El vídeo enlazado corresponde a la emisión completa de El Debate.</p></div></div>
+    <div class="source-roundup"><strong>Contraste independiente adicional</strong><span>Las fichas ampliadas incorporan comprobaciones de VerificaRTVE y Maldita/Verificat, junto con los documentos oficiales citados en cada caso.</span><a href="https://www.rtve.es/noticias/20261126/debate-cuatro-verificacion-datos-elecciones-generales-2026/17330993.shtml" target="_blank" rel="noopener">VerificaRTVE <span aria-hidden="true">↗</span></a><a href="https://maldita.es/desinfo/20261126/verificaciones-del-debate-a-cuatro-para-las-elecciones-del-29n/" target="_blank" rel="noopener">Maldita.es <span aria-hidden="true">↗</span></a></div>
+  </section>
 </main>
-<footer><div class="wrap">Proyecto independiente. Fotos y escudos: añade los tuyos en <code>img/</code> (ver LEEME.txt).</div></footer>
+<footer><div class="wrap footer-inner"><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">26</span><span>DEBATE<span class="brand-muted"> / 26N</span></span></a><span>Proyecto independiente de consulta. Fuentes y límites indicados en cada ficha.</span><a href="#metodo">Leer el método ↑</a></div></footer>
 <script src="claims.js"></script><script src="app.js"></script>
-</body></html>
+</body>
+</html>

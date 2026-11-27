@@ -10,36 +10,37 @@ function blockOf(s){for(var i=0;i<BLQ.length;i++){if(s>=BLQ[i][1]&&s<BLQ[i][2])r
 function who(x){return x.w.map(function(c){return NAMES[c]}).join(" y ")}
 var items=D.map(function(r){return {tc:r[0],t:sec(r[0]),w:r[1].split(""),v:r[2],q:r[3],d:r[4],o:r[5]||[],n:r[6]||"",pr:r[7]||[],bs:r[8]||"-",b:blockOf(sec(r[0]))}}).sort(function(a,b){return a.t-b.t});
 items.forEach(function(x,k){x.k=k});
-var cand="",vf="",sel=0,ytp=null;
-function vis(x){return (!cand||x.w.indexOf(cand)>=0)&&(!vf||x.v===vf)}
+var cand="",vf="",sel=0,ytp=null,query="",topic="";
+function vis(x){var hay=(x.q+" "+x.d+" "+who(x)+" "+BLQ[x.b][0]).toLocaleLowerCase("es");return (!cand||x.w.indexOf(cand)>=0)&&(!vf||x.v===vf)&&(!topic||BLQ[x.b][0]===topic)&&(!query||hay.indexOf(query)>=0)}
 function candItems(){return items.filter(function(x){return !cand||x.w.indexOf(cand)>=0})}
+function filteredItems(){return items.filter(vis)}
 /* pestañas */
 var tabs=document.getElementById("tabs");
 [["","Todos"],["S","Sánchez"],["F","Feijóo"],["A","Abascal"],["C","Colau"],["m","Método"]].forEach(function(t){var b=el("button","",t[1]);b.type="button";b.dataset.c=t[0];b.setAttribute("aria-selected",t[0]===""?"true":"false");
  b.onclick=function(){if(t[0]==="m"){document.getElementById("metodo").scrollIntoView();return}setCand(t[0])};tabs.appendChild(b)});
-function setCand(c){cand=c;vf="";tabs.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.c===c?"true":"false")});hero();renderPanel();ticks();var f=items.filter(vis);if(f.length&&!vis(items[sel]))select(f[0].k,false)}
+function setCand(c){cand=c;vf="";tabs.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.c===c?"true":"false")});hero();renderPanel();ticks();var f=filteredItems();if(f.length&&!vis(items[sel]))select(f[0].k,false);renderPanel();ticks()}
 function logoBox(c){var b=document.getElementById("logo");b.innerHTML="";if(!c){b.textContent="26N";return}b.textContent=INI[c];var i=new Image();i.alt="";i.src="img/"+IMG[c]+".jpg";i.onload=function(){b.textContent="";b.appendChild(i)};i.onerror=function(){var j=new Image();j.alt="";j.src="img/"+IMG[c]+".png";j.onload=function(){b.textContent="";b.appendChild(j)}}}
-function hero(){var L=candItems(),n={V:0,M:0,F:0,N:0};L.forEach(function(x){n[x.v]++});var ok=L.length-n.N,pp=L.filter(function(x){return x.bs==="P"}).length,oo=ok-pp;
+function hero(){var L=candItems(),n={V:0,M:0,F:0,N:0};L.forEach(function(x){n[x.v]++});var ok=L.length-n.N,press=L.filter(function(x){return x.pr&&x.pr.length}).length;
  document.getElementById("name").textContent=cand?NAMES[cand]:"Los cuatro candidatos";
  document.getElementById("party").textContent=cand?PARTY[cand]:"Debate a cuatro, 26 de noviembre de 2026";logoBox(cand);
- document.getElementById("sum").innerHTML="Comprobamos <b>"+L.length+" afirmaciones</b>"+(cand?" de "+NAMES[cand]:"")+" <b>"+ok+"</b> con veredicto ("+n.V+" verdad, "+n.M+" a medias, "+n.F+" falso): "+oo+" con fuente oficial y "+pp+" por contraste de varios medios. <b>"+n.N+"</b> quedan sin comprobar. Las opiniones y promesas no se puntúan."}
+ document.getElementById("sum").innerHTML="Comprobamos <b>"+L.length+" afirmaciones</b>"+(cand?" de "+NAMES[cand]:"")+" <b>"+ok+"</b> con veredicto ("+n.V+" verdad, "+n.M+" a medias, "+n.F+" falso): "+oo+" con fuentes oficiales y "+press+" con contraste periodístico. <b>"+n.N+"</b> quedan sin comprobar. Las categorías de fuentes pueden solaparse; las opiniones y promesas no se puntúan."}
 /* línea temporal */
 var chart=document.getElementById("chart"),ph=document.getElementById("ph");
 BLQ.forEach(function(b){var s=el("span","",esc(b[0]));s.style.left=(b[1]/TOTAL*100)+"%";s.style.width=((b[2]-b[1])/TOTAL*100)+"%";document.getElementById("blocks").appendChild(s)});
 items.forEach(function(x){var b=el("button","tick");b.type="button";b.dataset.v=x.v;b.dataset.k=x.k;b.style.left=(x.t/TOTAL*100)+"%";
- b.setAttribute("aria-label",x.tc+", "+VN[x.v]+", "+who(x));b.title=x.tc+" · "+VN[x.v];b.addEventListener("click",function(e){e.stopPropagation();select(x.k,true)});chart.appendChild(b)});
+ b.setAttribute("aria-label",x.tc+", "+VN[x.v]+", "+who(x)+": "+x.q);b.title=x.tc+" · "+VN[x.v];b.addEventListener("click",function(e){e.stopPropagation();select(x.k,true)});chart.appendChild(b)});
 function ticks(){chart.querySelectorAll(".tick").forEach(function(t){t.style.display=vis(items[+t.dataset.k])?"":"none"})}
 chart.addEventListener("click",function(e){var r=chart.getBoundingClientRect(),t=(e.clientX-r.left)/r.width*TOTAL;if(ytp&&ytp.seekTo){ytp.seekTo(t,true);ytp.playVideo()}});
 var tt=null;function toast(x){var t=document.getElementById("toast");t.style.borderLeftColor=VC[x.v];t.innerHTML="<b>"+x.tc+"</b> · "+esc(who(x))+" · <b>"+VN[x.v]+"</b><br>"+esc(x.q);t.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("on")},8000)}
 /* panel */
 function renderPanel(){var base=candItems(),n={V:0,M:0,F:0,N:0};base.forEach(function(x){n[x.v]++});
  var T=document.getElementById("vtabs");T.innerHTML="";
- [["","Todos",base.length]].concat(VO.map(function(v){return [v,VN[v],n[v]]})).forEach(function(t){var b=el("button","",t[1]+" "+t[2]);b.type="button";b.setAttribute("role","tab");b.setAttribute("aria-selected",vf===t[0]?"true":"false");b.onclick=function(){vf=t[0];renderPanel();ticks()};T.appendChild(b)});
+ [["","Todos",base.length]].concat(VO.map(function(v){return [v,VN[v],n[v]]})).forEach(function(t){var b=el("button","",t[1]+" "+t[2]);b.type="button";b.setAttribute("role","tab");b.setAttribute("aria-selected",vf===t[0]?"true":"false");b.setAttribute("aria-controls","list");b.setAttribute("tabindex",vf===t[0]?"0":"-1");b.onclick=function(){vf=t[0];renderPanel();ticks();var f=filteredItems();if(f.length&&!vis(items[sel]))select(f[0].k,false)};b.onkeydown=function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();var a=Array.from(T.querySelectorAll("button")),i=a.indexOf(b),nxt=a[(i+(e.key==="ArrowRight"?1:a.length-1))%a.length];nxt.focus();nxt.click()}};T.appendChild(b)});
  document.getElementById("vbar").innerHTML=VO.map(function(v){return n[v]?"<i style='width:"+(n[v]/base.length*100)+"%;background:"+VC[v]+"'></i>":""}).join("");
- var L=document.getElementById("list");L.innerHTML="";var f=base.filter(function(x){return !vf||x.v===vf});
- document.getElementById("count").textContent=f.length+" afirmaciones comprobables";
+ var L=document.getElementById("list");L.innerHTML="";var f=base.filter(vis);
+ document.getElementById("count").textContent=f.length+" de "+base.length;
  f.forEach(function(x){var b=el("button","it"+(x.k===sel?" sel":""),"<span class='t'>"+x.tc+"</span><span class='d' data-v='"+x.v+"' title='"+VN[x.v]+"'></span><span><span class='q'>"+esc(x.q.length>120?x.q.slice(0,118)+"…":x.q)+"</span><small>"+VN[x.v]+" · "+esc(who(x))+" · "+esc(BLQ[x.b][0])+"</small></span>");b.type="button";b.dataset.k=x.k;b.onclick=function(){select(x.k,true)};L.appendChild(b)});
- if(!f.length)L.innerHTML="<p style='color:var(--ink2)'>No hay afirmaciones con ese veredicto.</p>"}
+ document.getElementById("empty-state").hidden=!!f.length;if(!f.length)L.innerHTML=""}
 /* ficha */
 function srcHtml(x){if(!x.o.length)return "<p class='none'>No se ha localizado una fuente oficial para esta cifra.</p>";
  return "<ul class='src'>"+x.o.map(function(id){var s=OFFSRC[id];return "<li><a target='_blank' rel='noopener' href='"+s[1]+"'><b>"+esc(s[0])+"</b><small>"+esc(s[2])+" · "+esc(s[3])+(s[4]&&s[4]!=="—"?" · "+esc(s[4]):"")+"</small></a></li>"}).join("")+"</ul>"}
@@ -55,7 +56,7 @@ function select(k,seek){sel=k;var x=items[k],d=document.getElementById("detail")
  chart.querySelectorAll(".tick").forEach(function(t){t.classList.toggle("sel",+t.dataset.k===k)});
  document.querySelectorAll(".it").forEach(function(i){var on=+i.dataset.k===k;i.classList.toggle("sel",on);if(on&&seek)i.scrollIntoView({block:"nearest"})});
  if(seek)goto(x.t)}
-function step(d){var k=sel;for(var n=0;n<items.length;n++){k=(k+d+items.length)%items.length;if(vis(items[k]))break}select(k,true)}
+function step(d){var f=filteredItems();if(!f.length)return;var i=f.findIndex(function(x){return x.k===sel});select(f[(i+d+f.length)%f.length].k,true)}
 function goto(t){if(ytp&&ytp.seekTo){ytp.seekTo(t,true);ytp.playVideo();document.getElementById("vwrap").scrollIntoView({block:"center"})}else window.open(YTU+"&t="+t+"s","_blank")}
 /* reproductor */
 var tg=document.createElement("script");tg.src="https://www.youtube.com/iframe_api";document.head.appendChild(tg);
@@ -68,4 +69,8 @@ var C=document.getElementById("chap");BLQ.forEach(function(b){var m=function(s){
 /* datos de referencia */
 var KP=[["853.509","pacientes en lista de espera quirúrgica a 31-12-2025","SISLE"],["100,3 %","deuda de las administraciones públicas sobre el PIB, septiembre 2026","BDE_DEUDA"],["10,18 %","tasa de paro, EPA 3T 2026, con 22.852.600 ocupados","INE_EPA26"],["22.624.165","afiliados medios a la Seguridad Social, octubre 2026","SS_AFIL"],["3.699.878","afiliados extranjeros, octubre 2026 (+19,3 %)","SS_EXT"],["1.376,1 €","pensión media del sistema, octubre 2026 (+4,6 %)","SS_PENS"],["15.267 M€","Fondo de Reserva de la Seguridad Social a 31-3-2026","FRSS"],["1.221 €","salario mínimo 2026 al mes en 14 pagas","BOE_SMI"],["+12,2 %","precio de la vivienda, 2.º trimestre 2026 (interanual)","INE_IPV"],["38,1 %","presión fiscal de España en 2025 sobre el PIB (UE: 40,7 %)","EUR_FISC"],["100.980","viviendas terminadas en 2024, mayor cifra en 12 años","OVS"],["25.540","lanzamientos practicados en 2025 (−11 %)","CGPJ"]];
 var K=document.getElementById("kpis");KP.forEach(function(r){var s=OFFSRC[r[2]];K.appendChild(el("div","kpi","<b>"+r[0]+"</b><span>"+esc(r[1])+"</span><a target='_blank' rel='noopener' href='"+s[1]+"'>"+esc(s[2])+"</a>"))});
+var topicFilter=document.getElementById("topic-filter");
+BLQ.forEach(function(b){var o=document.createElement("option");o.value=b[0];o.textContent=b[0];topicFilter.appendChild(o)});
+document.getElementById("claim-search").addEventListener("input",function(e){query=e.target.value.trim().toLocaleLowerCase("es");renderPanel();ticks();var f=filteredItems();if(f.length&&!vis(items[sel]))select(f[0].k,false)});
+topicFilter.addEventListener("change",function(e){topic=e.target.value;renderPanel();ticks();var f=filteredItems();if(f.length&&!vis(items[sel]))select(f[0].k,false)});
 hero();renderPanel();select(0,false);
